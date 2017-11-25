@@ -20,6 +20,8 @@ const (
 	OUTCOME_ABORT = iota
 	OUTCOME_PUSH
 	OUTCOME_WIN
+	OUTCOME_WIN_BJ
+	OUTCOME_WIN_DB
 	OUTCOME_LOSS
 )
 
@@ -85,7 +87,7 @@ func (round *Round) Play(determineAction func(round Round) Action) Outcome {
 
 	// If the player has blackjack, he wins!
 	if round.Player.Sum() == BUST_LIMIT {
-		return OUTCOME_WIN
+		return OUTCOME_WIN_BJ
 	}
 
 	for {
